@@ -1,0 +1,185 @@
+<!doctype html>
+<!--
+* Builded by Impleplus application builder (https://builder.impleplus.com)
+* Version 2.0.0
+* Link https://www.impleplus.com
+* Copyright impleplus.com
+* Licensed under MIT (https://mit-license.org)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'>        
+    <title><%=title%></title>
+    <link rel="icon" href="/static/favicon.png" type="image/x-icon">    
+    <link rel="icon" href="/static/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="/static/favicon.png">
+
+    <!-- CSS files -->
+    <link href="/css/tabler.min.css" rel="stylesheet"/>
+    <link href="/css/tabler-flags.min.css" rel="stylesheet"/>
+    <link href="/css/tagify.css" rel="stylesheet" type="text/css" />
+    <link href="/css/flatpickr.min.css" rel="stylesheet">
+    <link href="/css/impleplus.css" rel="stylesheet"/>
+    <link href="/css/impleplus-custom.css" rel="stylesheet"/>
+    <%- defineContent('styles') %>
+  </head>
+  <body class="layout-fluid">
+    <div class="page">
+      <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark" id="siteNavbar">     
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".data-bs-navbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse p-0 data-bs-navbar" id="navbar-menu">
+            <h1 class="navbar-brand">
+              <a href="/">
+                <img src="/static/logo.png" alt="imple" class="navbar-brand-image p-2">
+                Questionnaire
+              </a>
+            </h1>
+            <div class="collapse navbar-collapse data-bs-navbar" id="navbar-menu-list">
+              <ul class="navbar-nav pt-lg-3">
+              </ul>
+            </div>
+          </div>        
+      </aside>
+      <div class="page-wrapper" id="page-wrapper">
+        <div class="container-xl bg-white pb-3">
+          <div class="page-header d-print-none">
+            <div class="row align-items-center">
+              <div class="col-1 navbar-side">
+                <a href="javascript:void(0)" onclick="toggleNavbar()"><img class="sidebar-btn" src="/static/leftnav.png"></a>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                    <span class="avatar avatar-sm" style="background-image: url('<%=user.picture%>')"></span>
+                    <div class="d-none d-xl-block ps-2">
+                      <div><%=user.user_name%></div>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <div class="dropdown-divider"></div>
+                    <a href="/logout" class="dropdown-item">Logout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
+        <%-body-%>
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    Builded by impleplus's Application Builder: 
+                    <a href="https://www.impleplus.com" target="_blank">impleplus.com</a>.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- modal-lg, modal-2lg, modal-full-width  -->
+    <div class="modal modal-blur fade" id="lookup-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-2lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Lookup modal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row pb-1">
+              <div class="col col-6">
+                    <div class="input-icon">
+                      <span class="input-icon-addon">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                      </span>
+                      <input type="text" name="qLookup" id="qLookup" value="" onkeyup="lookup.search(event)" class="form-control" placeholder="Search…" aria-label="Search...">
+                    </div>
+              </div>
+            </div>            
+            <div class="table-responsive">
+              <table class="table card-table table-vcenter text-nowrap datatable table-striped" id="tbl-lookup">
+                <thead>
+                    <tr>
+                    </tr>
+                  </thead>
+                  <tbody>    
+                    <tr>
+                    </tr>
+                  </tbody>
+              </table>
+
+              <br/>
+              <div id="tbl-lookup-pagination" class="imple-pagination"></div>
+            </div>            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn bg-warning" onclick="lookup.clear()">Clear</button>
+            <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <!-- Libs JS -->
+    <script src="/libs/axios.min.js"></script>
+    <script src="/libs/chart.js/chart.min.js"></script>
+    <script src="/libs/tagify/tagify.js"></script>
+    <script src="/libs/tagify/tagify.polyfills.min.js"></script>
+    <script src="/libs/tabler.min.js"></script>
+    <script src="/libs/lodash.min.js"></script>
+    <script src="/libs/moment.min.js"></script>
+    <script src="/libs/flatpickr.js"></script>
+    <script src="/js/impleplus.js"></script>   
+    <script type="text/javascript">
+      var lookupModal = new bootstrap.Modal(document.getElementById('lookup-modal'));
+      var accessNavs = JSON.parse(`<%-JSON.stringify(accessNavs)%>`);
+      var originalUrl = "<%-originalUrl.split('?')[0]%>";          
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.datepicker').forEach(function(datepicker) {
+          flatpickr(`#${datepicker.id}`, 
+          {
+            dateFormat: datepicker.getAttribute("data-format"),
+            allowInput: true,
+            parseDate: (datestr, format) => {
+              return moment(datestr, format, true).toDate();
+            },
+            formatDate: (date, format, locale) => {
+              return moment(date).format(format);
+            }
+          });
+        });        
+        document.querySelectorAll('.datetimepicker').forEach(function(datepicker) {
+          flatpickr(`#${datepicker.id}`, 
+          {
+            dateFormat: datepicker.getAttribute("data-format"),
+            allowInput: true,
+            enableTime: true,
+            time_24hr: true,
+            parseDate: (datestr, format) => {
+              return moment(datestr, format, true).toDate();
+            },
+            formatDate: (date, format, locale) => {
+              return moment(date).format(format);
+            }
+          });
+        });
+        renderNav.active();
+      });
+    </script>
+    <%- defineContent('scripts') %>
+  </body>
+
+</html>

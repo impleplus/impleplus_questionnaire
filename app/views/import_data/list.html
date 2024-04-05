@@ -1,0 +1,67 @@
+
+    <div class="page-body">
+      <div class="container-xl">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-header card-header-light">
+                  </div>
+                  <div class="card-body">
+                      
+                <h3>Import data</h3><hr class="header-text"/>
+                <div class="row pb-1">
+                  <div class="col col-3">
+                        <div class="input-icon">
+                          <span class="input-icon-addon">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                          </span>
+                          <input type="text" name="qimport_datas" id="qimport_datas" value="<%=param.qimport_datas%>" onkeyup="table_xtsblM.search(event)" data-type="text" data-field='table_name' data-operator="like" class="form-control table_xtsblM-searchFilter" placeholder="Search…" aria-label="Search...">
+                        </div>
+                  </div>
+                  <div class="col-auto ms-auto d-print-none">
+                      <div class="btn-list">
+                          <%if(accessAction.create){%><a href="/import_data/edit" class="btn btn-outline-success d-none d-sm-inline" target="">Import</a><%}%>
+                      </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table card-table table-vcenter text-nowrap datatable table-striped" id="tbl-xtsblM">
+                    <thead>
+                        <tr>
+                          <th>Table name</th>
+                          <th>Import by</th>
+                          <th>Import date</th>
+                          <th>Status</th>
+                          <th>Message</th>
+                        </tr>
+                      </thead>
+                      <tbody>    
+                      </tbody>
+                  </table>
+  
+                  <br/>
+                  <div id="tbl-xtsblM-pagination" class="imple-pagination"></div>
+                </div>
+  
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> 
+  <%- contentFor('scripts') %>
+  <script type="text/javascript">
+      var accessAction = [];
+      var accessActionData = "<%-accessAction%>";
+      if(accessActionData != "" && accessActionData != undefined) {
+          accessAction = JSON.parse(String.raw `<%-JSON.stringify(accessAction)%>`);
+      }
+      var dataTblimport_datas = JSON.parse(String.raw `<%-JSON.stringify(import_datas)%>`);
+      var dataTblimport_datasPagination = JSON.parse(String.raw `<%-JSON.stringify(import_datasPagination)%>`);
+
+    var table_xtsblM = new Table_xtsblM("table_xtsblM",accessAction,dataTblimport_datas,dataTblimport_datasPagination);
+
+      onload = () => {                  
+        table_xtsblM.render(dataTblimport_datas);
+        table_xtsblM.pagination(dataTblimport_datasPagination);     
+      }
+      
+      </script>

@@ -1,0 +1,74 @@
+<div class="page-body">
+  <div class="container-xl">
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header card-header-light">
+            <h3>Role Access</h3>
+          </div>              
+            <div class="card-body">
+              <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                <%- include('../partials/rolebasetabs.html',{active:'access'}); %>                        
+              </ul>
+              <div class="tab-content">
+                <br/>
+                <form action="/user/rolebase/access/save" class="needs-validation" id="frm" method="post">
+                  <%for(dataNav of accessNavs){%>
+                    <%if(dataNav.items.length > 0){%>
+                      <div class="row">
+                        <label class="form-label col-2 col-form-label pt-1 bold"><%=dataNav.text%></label>
+                      </div>
+                      <%for(item of dataNav.items) {%>
+                        <div class="row">
+                          <label class="form-label col-2 col-form-label pt-1 ms-3"><%=item.text%></label>
+                          <%for(user_access_base of user_access_bases){%>
+                            <%
+                              let checked = "";
+                              if(_.find(user_role_base_accesss,{nav_id:item.id,access_base_id:user_access_base.id}) != undefined) {
+                                checked = "checked";
+                              }
+                            %>
+                            <div class="col col-1">
+                              <label class="form-check">
+                                <input class="form-check-input" type="checkbox" name="<%=item.id%>:<%=user_access_base.id%>" <%=checked%> >
+                                <span class="form-check-label"><%=user_access_base.name%></span>
+                              </label>
+                            </div>
+                          <%}%>
+                        </div>
+                      <%}%>
+                    <%} else {%>
+                      <div class="row">
+                        <label class="form-label col-2 col-form-label pt-1 ms-3"><%=dataNav.text%></label>
+                        <%for(user_access_base of user_access_bases){%>
+                          <%
+                            var checked = "";
+                            if(_.find(user_role_base_accesss,{nav_id:dataNav.id, access_base_id:user_access_base.id}) != undefined) {
+                              checked = "checked";
+                            }                            
+                          %>                          
+                          <div class="col col-1">
+                            <label class="form-check">
+                              <input class="form-check-input" type="checkbox" name="<%=dataNav.id%>:<%=user_access_base.id%>" <%=checked%>  >
+                              <span class="form-check-label"><%=user_access_base.name%></span>
+                            </label>
+                          </div>
+                        <%}%>
+                      </div>
+                    <%}%>
+
+                  <%}%>
+                  <hr/>
+                  <div class="form-footer text-right">
+                    <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                    <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                  </div>                
+              </form>
+              </div>
+            </div>        
+        </div>
+      </div>
+ 
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<li class="nav-item">
+    <a href="/user/edit?user=<%=param.user%>" class="nav-link <%if(active=='user'){%>active<%}%>">User Info</a>
+  </li>                      
+  <li class="nav-item">
+    <a href="/user/roles?user=<%=param.user%>" class="nav-link <%if(active=='roles'){%>active<%}%>">User Roles</a>
+  </li>
+  <li class="nav-item">
+    <a href="/user/password?user=<%=param.user%>" class="nav-link <%if(active=='password'){%>active<%}%>">Password</a>
+  </li>  

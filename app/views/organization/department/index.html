@@ -1,0 +1,76 @@
+<div class="page-body">
+  <div class="container-xl">
+<div class="col-12">
+    <div class="card">
+        <div class="card-header card-header-light">
+        <h3>Departments</h3>
+        </div>
+        <div class="card-body">          
+            <ul class="nav nav-tabs" data-bs-toggle="tabs">
+              <%- include('../partials/tabs.html',{active:'departments'}); %>
+            </ul> 
+              <div class="tab-content">
+                <br/>
+                <div class="container-xl">                    
+                <h3>Department</h3><hr class="header-text"/>
+                <div class="row pb-1">
+                  <div class="col col-3">
+                        <div class="input-icon">
+                          <span class="input-icon-addon">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                          </span>
+                          <input type="text" name="q" id="q" value="" onkeyup="table_NGFllA.search(event)" data-type="text" data-field='name' data-operator="like" class="form-control table_NGFllA-searchFilter" placeholder="Search…" aria-label="Search...">
+                        </div>
+                  </div>
+                  <div class="col-auto ms-auto d-print-none">
+                      <div class="btn-list">
+                        <a href="/organization/department/edit?location=<%=param.location%>" class="btn btn-outline-success d-none d-sm-inline">Add Data</a>
+                      </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table card-table table-vcenter text-nowrap datatable table-striped" id="tbl-NGFllA">
+                    <thead>
+                        <tr>
+                          <th>Department Name</th>
+                          <th>Address</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>    
+                    </tbody>
+                  </table>
+                  <br/>
+                  <div id="tbl-NGFllA-pagination" class="imple-pagination"></div>
+                </div>
+                </div>
+              </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+    var accessAction = [];
+    var accessActionData = "<%-accessAction%>";
+    var param = JSON.parse('<%-JSON.stringify(param)%>');    
+    if(accessActionData != "" && accessActionData != undefined) {
+        accessAction = JSON.parse(String.raw `<%-JSON.stringify(accessAction)%>`);
+    }
+
+    var departmentRecords = JSON.parse(String.raw `<%-JSON.stringify(org_departments)%>`);
+    var departmentRecordsPagination = JSON.parse(String.raw `<%-JSON.stringify(org_departmentsPagination)%>`);
+
+    var table_NGFllA = new Table_NGFllA("table_NGFllA",accessAction,departmentRecords,departmentRecordsPagination);
+
+    onload = () => {      
+      table_NGFllA.render(departmentRecords);
+      table_NGFllA.pagination(departmentRecordsPagination);     
+    }
+
+</script>
+

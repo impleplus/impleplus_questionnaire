@@ -1,0 +1,74 @@
+<!doctype html>
+<!--
+* impleplus Application Builder - Subscription and Open Source Business Application.
+* @version {appVersion}
+* @link https://www.impleplus.com
+* Copyright impleplus.com
+* Licensed under MIT (https://github.com/impleplus/{appName}/LICENSE)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Application Builder</title>
+    <link rel="icon" href="/static/favicon.png" type="image/x-icon">    
+    <link rel="icon" href="/static/favicon.png" sizes="32x32">    
+    <!-- CSS files -->
+    <link href="/css/tabler.min.css" rel="stylesheet"/>
+    <link href="/css/tabler-flags.min.css" rel="stylesheet"/>
+    <link href="/css/tabler-payments.min.css" rel="stylesheet"/>
+    <link href="/css/tabler-vendors.min.css" rel="stylesheet"/>
+    <link href="/css/impleplus.css" rel="stylesheet"/>
+    <link href="/css/tagify.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body  class=" border-top-wide border-primary d-flex flex-column">
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="text-center mb-4">
+
+        </div>
+        <form class="card card-md" id="frm" action="/login" method="post" autocomplete="off">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Login</h2>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" value="" class="form-control" autocomplete="off">
+            </div>
+            <div class="mb-2">
+              <label class="form-label">
+                Password
+                <span class="form-label-description">                  
+                </span>
+              </label>
+              <div class="input-group input-group-flat">
+                <input type="password" class="form-control" value="" name="password" autocomplete="off">
+              </div>
+            </div>
+            <div class="mb-2">
+              <label class="form-check">
+                <input type="checkbox" name="rememberme" class="form-check-input"/>
+                <span class="form-check-label">Remember me on</span>
+              </label>
+            </div>
+            <div class="form-footer">
+              <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+              <button type="submit" id="btn_save" class="btn btn-primary w-100 btn-save" data-form="frm" method-callback="" method-before="">Sign In</button>
+            </div>
+          </div>
+
+        </form>
+        <div class="text-center text-muted mt-3">
+       
+        </div>
+      </div>
+    </div>
+        
+    <script src="/libs/axios.min.js"></script>
+    <script src="/libs/lodash.min.js"></script>
+    <script src="/js/impleplus.js"></script>   
+    <script>      
+    </script>
+
+  </body>
+</html>

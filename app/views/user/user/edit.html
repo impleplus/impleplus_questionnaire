@@ -1,0 +1,138 @@
+<div class="page-body">
+  <div class="container-xl">
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header card-header-light">
+            <h3>User</h3>
+          </div>              
+            <div class="card-body">
+              <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                <%if(!param.user){%>
+                <li class="nav-item">
+                  <a href="/user/edit" class="nav-link active">User Info</a>
+                </li>
+                <%}%>
+                <%if(param.user){%>
+                  <%- include('../partials/userroletabs.html',{active:'user'}); %>       
+                <%}%>
+              </ul>
+              <div class="tab-content">
+                <br/>
+                <form action="/user/save" class="needs-validation" id="frm" method="post">
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Picture</label>
+                        <div>
+                            <%if(user.picture){%>
+                            <img src="<%=__config.uploadPath%>/<%=user.picture%>" />
+                            <%}else {%>
+                              <img src="/static/avatars/default.jpg" class="avatar-user" />
+                            <%}%>
+                          <input type="file" name="picture" value="<%=user.user_code%>" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-6">
+                          <label class="form-label">User code</label>
+                          <div>
+                            <input type="text" name="user_code" value="<%=user.user_code%>" class="form-control">
+                          </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Name</label>
+                        <div>
+                          <input type="text" name="user_name" value="<%=user.user_name%>" class="form-control">
+                        </div>
+                      </div>                   
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Email</label>
+                        <div>
+                          <input type="text" name="email" value="<%=user.email%>" class="form-control" required>
+                        </div>
+                      </div>
+                      <%if(!param.user){%>
+                        <div class="form-group mb-3 col-md-6">
+                          <label class="form-label">Password</label>
+                          <div>
+                            <input type="password" name="password" autocomplete="new-password" class="form-control">
+                          </div>
+                        </div>    
+                        <div class="form-group mb-3 col-md-6">
+                          <label class="form-label">Confirm Password</label>
+                          <div>
+                            <input type="password" name="confirmpassword" autocomplete="confirm-password" class="form-control">
+                          </div>
+                        </div>                                            
+                      <%}%>
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Location</label>
+                        <div>
+                          <select class="form-control" name="location_id" value="<%=user.location_id%>" >
+                            <% org_locations.forEach(function(data) { %>
+                              <option value="<%=data.id%>" <%if(data.id==user.location_id){%>selected<%}%> ><%=data.name%></option>
+                            <% }); %>                                 
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Department</label>
+                        <div>
+                          <select class="form-control" name="department_id" value="<%=user.department_id%>">
+                            <% org_departments.forEach(function(data) { %>
+                              <option value="<%=data.id%>" <%if(data.id==user.department_id){%>selected<%}%> ><%=data.name%></option>
+                            <% }); %>                                                      
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Teams</label>
+                        <div>
+                          <input type="text" name="teams_id" id="teams_id" value="" class="form-control">
+                        </div>
+                      </div>                      
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Status</label>
+                        <div>
+                          <select class="form-control" name="status_id" value="<%=user.status_id%>">
+                            <option value="0">Enable</option>
+                            <option value="1">Disable</option>
+                          </select>
+                        </div>
+                      </div>                      
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Address</label>
+                        <div>
+                          <textarea class="form-control" name="address" rows="2"><%=user.address%></textarea>
+                        </div>
+                      </div>   
+                      <div class="form-group mb-3 col-md-12">
+                          <label class="form-label">Remark</label>
+                          <div>
+                            <textarea class="form-control" rows="3" name="remark" value="<%=user.remark%>"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-footer text-right">
+                        <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                        <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                      </div>
+                  </form>
+              </div>
+            </div>        
+        </div>
+      </div>
+ 
+  </div>
+</div>
+
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+
+  var org_teams = JSON.parse(`<%-JSON.stringify(org_teams)%>`);
+  var user_teams = JSON.parse(`<%-JSON.stringify(user_teams)%>`).map((obj)=> ({'value': obj.name, 'data_id': obj.team_id}) );
+
+  onload = () => {    
+    userUserEdit.init();
+  }
+
+</script>

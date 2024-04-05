@@ -1,0 +1,52 @@
+<div class="page-body">
+    <div class="container-xl">
+
+        <div class="col-12">
+
+          <div class="card">
+            <div class="card-header card-header-light">
+              <h3>Location</h3>
+            </div>              
+              <div class="card-body">
+                <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                  <%if(!param.location){%>
+                  <li class="nav-item">
+                    <a href="/organization/location/edit" class="nav-link active">Location</a>
+                  </li>
+                  <%} else {%>
+                    <%- include('../partials/tabs.html',{active:'location'}); %>
+                  <%}%>
+                </ul>
+                <div class="tab-content">
+                  <br/>
+                  <form action="/organization/location/save" class="needs-validation" id="frm" method="post">
+                        <div class="form-group mb-3 col-md-6">
+                            <label class="form-label">Name</label>
+                            <div>
+                              <input type="text" name="name" value="<%=org_location.name%>" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group mb-3 col-md-12">
+                            <label class="form-label">Address</label>
+                            <div>
+                              <textarea class="form-control" name="address" rows="2"><%=org_location.address%></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group mb-3 col-md-12">
+                            <label class="form-label">Remark</label>
+                            <div>
+                              <textarea class="form-control" name="remark" rows="3"><%=org_location.remark%></textarea>
+                            </div>
+                          </div>                           
+                        <div class="form-footer text-right">
+                          <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                          <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                        </div>
+                    </form>
+                </div>
+              </div>        
+          </div>
+        </div>
+   
+    </div>
+  </div>

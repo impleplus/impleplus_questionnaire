@@ -1,0 +1,9 @@
+<li class="nav-item">
+    <a href="/user/rolebase/edit?role=<%=param.role%>" class="nav-link <%if(active=='role'){%>active<%}%>">Role Info</a>
+  </li>
+  <li class="nav-item">
+    <a href="/user/rolebase/organization?role=<%=param.role%>" class="nav-link <%if(active=='organization'){%>active<%}%>">Data Access</a>
+  </li>                   
+  <li class="nav-item">
+    <a href="/user/rolebase/access?role=<%=param.role%>" class="nav-link <%if(active=='access'){%>active<%}%>">Access</a>
+  </li>

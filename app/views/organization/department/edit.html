@@ -1,0 +1,52 @@
+<div class="page-body">
+    <div class="container-xl">
+      <div class="row row-cards">
+        <div class="col-12">
+
+          <div class="card">
+            <div class="card-header card-header-light">
+              <h3>Department</h3>
+            </div>
+              
+              <div class="card-body">
+                <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                    <%- include('../partials/tabs.html',{active:'departments'}); %>                      
+                </ul>
+
+                <div class="tab-content">
+                  <br/>
+                  <form action="/organization/department/save" class="needs-validation" id="frm" method="post">
+                    <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Department Name</label>
+                        <div>
+                          <input type="text" name="name" value="<%=org_department.name%>" class="form-control">
+                        </div>
+                      </div>                    
+                      <div class="form-group mb-3 col-md-12">
+                        <label class="form-label">Address</label>
+                        <div>
+                          <textarea class="form-control" name="address" rows="3"><%=org_department.address%></textarea>
+                        </div>
+                      </div>      
+                      <div class="form-group mb-3 col-md-12">
+                        <label class="form-label">Remark</label>
+                        <div>
+                          <textarea class="form-control" name="remark" rows="3"><%=org_department.remark%></textarea>
+                        </div>
+                      </div>
+
+                    <div class="form-footer text-right">
+                      <a href="/organization/departments?location=<%=param.location%>" class="btn btn-secondary">Back</a>
+                      <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                      <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                    </div>
+                </form>
+                </div>
+
+               
+              </div>        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

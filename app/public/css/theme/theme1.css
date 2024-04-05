@@ -1,0 +1,33 @@
+/*!
+* Builded by Impleplus application builder (https://builder.impleplus.com)
+* Version 2.0.0
+* Link https://www.impleplus.com
+* Copyright impleplus.com
+* Licensed under MIT (https://mit-license.org)
+*/
+aside.navbar {
+    background-color: #359ade;
+}
+.navbar-brand {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;   
+}
+.navbar-menu-list {
+    padding: 0px 30px 0px 20px;
+}
+aside.navbar .dropdown-item {
+    color: #fff!important;
+}
+.navbar .dropdown-menu .dropdown-item.active {
+    color: #004d89!important;
+}
+.navbar-brand-image {
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.navbar-brand a{
+    color: rgba(255,255,255,.7);    
+}

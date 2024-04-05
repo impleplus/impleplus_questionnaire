@@ -1,0 +1,44 @@
+<div class="page-body">
+  <div class="container-xl">
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header card-header-light">
+            <h3>User Roles</h3>
+          </div>              
+            <div class="card-body">
+              <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                <%if(param.user){%>
+                  <%- include('../partials/userroletabs.html',{active:'roles'}); %>
+                <%}%>                       
+              </ul>
+              <div class="tab-content">
+                <br/>
+                <form action="/user/role/save" class="needs-validation" id="frm" method="post">
+                  <div class="row">
+                    <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-11">
+                      <% user_role_bases.forEach(function(data) { %>
+                        <label class="form-check">
+                          <input class="form-check-input" name="<%=data.id%>" <%=data.checked%> type="checkbox">
+                          <span class="form-check-label"><%=data.name%></span>
+                        </label>
+                      <%});%>
+                    </div>
+                  </div>
+
+                  <hr/>
+                  <div class="form-footer text-right">
+                    <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                    <button type="button" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>        
+        </div>
+      </div>
+ 
+  </div>
+</div>

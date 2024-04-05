@@ -1,0 +1,50 @@
+{
+    "database": {
+        "username": "",
+        "password": "",
+        "databasename": "",
+        "host": "localhost",
+        "port": "3306",
+        "dialect": "mysql"
+    },
+    "uploadPath": "uploads",
+    "paginationNum": 20,
+    "exportRecord": 10,
+    "cookie": {
+        "securityKey": "Qwa5LRYCsVKWRGrYoGgwmHnetMk0h3Dh",
+        "initVector": "9Utp2Zf1Y9MQFMq3",
+        "name": "ga9593YhSqHZNKVq",
+        "secret": "koBOirkJqyPH66Vg",
+        "maxAge": 1000,
+        "expires": 2147483647,
+        "cookieOptions": {
+            "httpOnly": true,
+            "secure": false,
+            "sameSite": true
+        }
+    },
+    "ignore": {
+        "exportColumns": [
+            "id",
+            "owner_id",
+            "assign",
+            "create_by",
+            "create_date",
+            "update_by",
+            "update_date"
+        ]
+    },
+    "importTables": [
+        {
+            "name": "questionnaire",
+            "addDefaultData": false
+        },
+        {
+            "name": "user",
+            "addDefaultData": false
+        }
+    ],
+    "dateFormat": "DD/MM/YYYY",
+    "databaseSync": "sync",
+    "version": 1
+}

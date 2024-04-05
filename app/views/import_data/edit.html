@@ -1,0 +1,89 @@
+
+    <div class="page-body">
+    <div class="container-xl">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header card-header-light">
+                </div>
+                    
+                <div class="card-body">
+      
+                <form action="/import_data/save" class="needs-validation" id="frm-info" method="post"> 
+                  <div class="row">
+                    <div class="form-group mb-3 col-md-4">
+                      <label class="form-label">Table</label>
+                      <div>
+                        <select class="form-select" name="importTable" id="importTable">
+                            <option value=""></option>
+                          <% importTables.forEach(function(data) { %>
+                              <option value="<%=data%>"><%=data%></option>
+                          <% }); %>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="form-group mb-3 col-md-3 center">
+                      <label class="form-label">&nbsp;</label>
+                      <div>
+                        <input type="button" onclick="onExportTemplate()" class="btn btn-outline-secondary d-none d-sm-inline" value="Export Template">
+                      </div>
+                    </div>          
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                  <label class="form-label">Check Duplicate Columns</label>
+                  <div>
+                    <input type="text" name="checkDupColumns" id="checkDupColumns" class="form-control">
+                  </div>
+                </div>                     
+                <div class="form-group mb-3 col-md-6">
+                  <label class="form-label">File</label>
+                  <div>
+                    <input type="file" name="fileupload" class="form-control">
+                  </div>
+                </div>                
+
+                <hr/>
+                <div class="text-end">
+                    <div class="text-right">
+                      <%if(accessAction.edit){%>           
+                        <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                        <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm-info" method-callback="" method-before="">Import</button>
+                      <%}%>   
+                    </div>
+                  </div>
+                </form>
+
+                </div>
+            </div>
+      </div>
+  </div> 
+</div>
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+
+    var table_columns = JSON.parse(`<%-JSON.stringify(table_columns)%>`);
+    var checkDupColumns = document.getElementById("checkDupColumns");
+    var tagCheckDupColumns = new Tagify(checkDupColumns, {
+      enforceWhitelist: true,
+      whitelist: [],
+      dropdown: {
+        classname: "tags-look", 
+        enabled: 0,
+        closeOnSelect: true
+      }
+    });
+
+  onload = () => {
+    document.getElementById("importTable").addEventListener('change', (event) => {
+      document.getElementById("checkDupColumns").value = "";
+      tagCheckDupColumns.whitelist = _.filter(table_columns,{TABLE_NAME:event.target.value}).map(({COLUMN_NAME})=> COLUMN_NAME);
+    });
+  }
+
+  function onExportTemplate() {
+    var tableName = document.getElementById("importTable").value;      
+    if (tableName != "") {
+      window.open(`/import_data/template?tableName=${tableName}`);
+    }
+  }
+
+</script>

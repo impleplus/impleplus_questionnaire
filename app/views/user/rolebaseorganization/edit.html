@@ -1,0 +1,62 @@
+<div class="page-body">
+  <div class="container-xl">
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header card-header-light">
+            <h3>Role Organization</h3>
+          </div>
+            <div class="card-body">
+              <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                <%- include('../partials/rolebasetabs.html',{active:'organization'}); %>   
+              </ul>
+              <div class="tab-content">
+                  <br/>
+                  <form action="/user/rolebase/organization/save" class="needs-validation" id="frm" method="post">
+                    <div class="form-group mb-3 col-md-6">
+                          <label class="form-label">Locations</label>
+                          <div>
+                            <input type="text" name="locations_id" id="locations_id" value="" class="form-control">
+                          </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-12">
+                          <label class="form-label">Departments</label>
+                          <div>
+                            <input type="text" name="departments_id" id="departments_id" value="" class="form-control">
+                          </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-12">
+                        <label class="form-label">Teams</label>
+                        <div>
+                          <input type="text" name="teams_id" id="teams_id" value="" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-footer text-right">
+                        <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                        <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+        </div>
+      </div>
+ 
+  </div>
+</div>
+
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+  var org_locations = JSON.parse(`<%-JSON.stringify(org_locations)%>`);  
+  var org_departments = JSON.parse(`<%-JSON.stringify(org_departments)%>`);
+  var org_teams = JSON.parse(`<%-JSON.stringify(org_teams)%>`);
+  var user_role_base_locations = JSON.parse(`<%-JSON.stringify(user_role_base_locations)%>`).map((obj)=> ({'value': obj.locationName, 'data_id': obj.location_id}) );
+  var user_role_base_departments = JSON.parse(`<%-JSON.stringify(user_role_base_departments)%>`).map((obj)=> ({'value':obj.locationName.concat(":",obj.departmentName), 'data_id': obj.department_id}) );
+  var user_role_base_teams = JSON.parse(`<%-JSON.stringify(user_role_base_teams)%>`).map((obj)=> ({'value': obj.locationName.concat(":",obj.teamName), 'data_id': obj.team_id}) );
+  onload = () => {
+    userRolebaseOrganizationEdit.tagorg_locations.init();
+    userRolebaseOrganizationEdit.tagorg_departments.init();
+    userRolebaseOrganizationEdit.tagorg_teams.init();
+  }
+
+</script>

@@ -1,0 +1,74 @@
+
+   <div class="page-body">
+    <div class="container-xl">
+   <div class="col-12">
+        <div class="card">
+            <div class="card-header card-header-light">
+            <h3>Users</h3>
+            </div>
+            <div class="card-body">
+                <div class="page-body">                    
+                    <div class="container-xl">                    
+                      <h3></h3><hr class="header-text"/>
+                      <div class="row pb-1">
+                        <div class="col col-3">
+                              <div class="input-icon">
+                                <span class="input-icon-addon">
+                                  <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                                </span>
+                                <input type="text" name="q" id="q" value="" onkeyup="table_nLbfqv.search(event)" data-type="text" data-field='user_code,user_name' data-operator="like" class="form-control table_nLbfqv-searchFilter" placeholder="Search…" aria-label="Search...">
+                              </div>
+                        </div>
+                        <div class="col-auto ms-auto d-print-none">
+                            <div class="btn-list">
+                              <a href="/user/edit" class="btn btn-outline-success d-none d-sm-inline" >Add Data</a>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table card-table table-vcenter text-nowrap datatable table-striped" id="tbl-nLbfqv">
+                          <thead>
+                              <tr>
+                                <th>User code</th>
+                                <th>User Name</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>    
+                            </tbody>
+                        </table>
+
+                        <br/>
+                        <div id="tbl-nLbfqv-pagination" class="imple-pagination"></div>
+                      </div>
+                    </div>                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+    var accessAction = [];
+    var accessActionData = "<%-accessAction%>";
+    if(accessActionData != "" && accessActionData != undefined) {
+        accessAction = JSON.parse(String.raw `<%-JSON.stringify(accessAction)%>`);
+    }
+
+    var dataTblusers = JSON.parse(String.raw `<%-JSON.stringify(users)%>`);
+    var dataTblusersPagination = JSON.parse(String.raw `<%-JSON.stringify(usersPagination)%>`);
+
+    var table_nLbfqv = new Table_nLbfqv("table_nLbfqv",accessAction,dataTblusers,dataTblusersPagination);
+
+    onload = () => {      
+      table_nLbfqv.render(dataTblusers);
+      table_nLbfqv.pagination(dataTblusersPagination);       
+    }
+
+
+</script>

@@ -1,0 +1,70 @@
+<div class="page-body">
+  <div class="container-xl">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header card-header-light">
+            <h3>Setting Location</h3>
+            </div>
+            <div class="card-body">
+                <div class="page-body">                    
+                    <div class="container-xl">                    
+                    <h3>Location</h3><hr class="header-text"/>
+                    <div class="row pb-1">
+                      <div class="col col-3">
+                            <div class="input-icon">
+                              <span class="input-icon-addon">
+                                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                              </span>
+                              <input type="text" name="q" id="q" value="<%=param.q%>" onkeyup="table_SqVFFZ.search(event)" data-type="text" data-field='name' data-operator="like" class="form-control table_SqVFFZ-searchFilter" placeholder="Search…" aria-label="Search...">
+                            </div>
+                      </div>
+                      <div class="col-auto ms-auto d-print-none">
+                          <div class="btn-list">
+                            <a href="/organization/location/edit" class="btn btn-outline-success d-none d-sm-inline" >Add Data</a>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table card-table table-vcenter text-nowrap datatable table-striped" id="tbl-SqVFFZ">
+                        <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Address</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <br/>
+                      <div id="tbl-SqVFFZ-pagination" class="imple-pagination"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+
+var accessAction = [];
+    var accessActionData = "<%-accessAction%>";
+    var param = JSON.parse('<%-JSON.stringify(param)%>');
+    if(accessActionData != "" && accessActionData != undefined) {
+        accessAction = JSON.parse(String.raw `<%-JSON.stringify(accessAction)%>`);
+    }
+    var locationRecords = JSON.parse(String.raw `<%-JSON.stringify(org_locations)%>`);
+    var locationRecordsPagination = JSON.parse(String.raw `<%-JSON.stringify(org_locationsPagination)%>`);
+    var table_SqVFFZ = new Table_SqVFFZ("table_SqVFFZ",accessAction,locationRecords,locationRecordsPagination,true,true,true,true);
+
+  onload = () => {      
+    table_SqVFFZ.render(locationRecords);
+    table_SqVFFZ.pagination(locationRecordsPagination);     
+  }
+      
+</script>
+

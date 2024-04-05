@@ -1,0 +1,143 @@
+<div class="page-body">
+	<div class="container-xl">
+ 		<div class="col-12">
+ 			<div class="card">
+ 				<div class="card-body">
+ 					<ul class="nav nav-tabs" data-bs-toggle="tabs">
+ 						<li class="nav-item">
+ 							<a href="#tabs-ixVmDP" class="nav-link active" data-bs-toggle="tab">Questionare</a>
+ 						</li>
+ 
+ 					</ul>
+ 					<div class="card-body">
+ 						<div class="tab-content">
+ 							<div class="tab-pane active show" id="tabs-ixVmDP">
+ 								<form action="/questionnaire/save" class="needs-validation" id="frm-ixVmDP" method="post">
+ 									<div class="row " >
+										<div class="col-8 dz undefined" data-dz="eijyDu" id="eijyDu" >
+ 											<p class="" >1. How often do you use our products?</p> 
+ 
+ 										</div>
+										<div class="col-4 dz undefined" data-dz="TfTfjw" id="TfTfjw" >
+ 							<div class="mb-3 col-md-12">
+ 								<label class="form-label"></label>
+ 								<div>
+ 							<label class="form-check">
+ 								<input class="form-check-input " type="radio" name="answer3" value="0" <%if(questionnaireRecord.answer3 == "0" || questionnaireRecord.answer3 == null){%>checked<%}%> >
+ 								<span class="form-check-label">Once a day</span>
+ 							</label>							<label class="form-check">
+ 								<input class="form-check-input " type="radio" name="answer3" value="1" <%if(questionnaireRecord.answer3 == "1" ){%>checked<%}%> >
+ 								<span class="form-check-label">Once a week</span>
+ 							</label>							<label class="form-check">
+ 								<input class="form-check-input " type="radio" name="answer3" value="2" <%if(questionnaireRecord.answer3 == "2" ){%>checked<%}%> >
+ 								<span class="form-check-label">Once a month</span>
+ 							</label>							<label class="form-check">
+ 								<input class="form-check-input " type="radio" name="answer3" value="2" <%if(questionnaireRecord.answer3 == "2" ){%>checked<%}%> >
+ 								<span class="form-check-label">Once a year</span>
+ 							</label>
+ 								</div>
+ 							</div>
+
+ 										</div>
+									</div>
+ 									<div class="row " >
+										<div class="col-8 dz undefined" data-dz="CvVdvJ" id="CvVdvJ" >
+ 											<p class="" >2. Which mobile features are most valuable to you</p> 
+ 
+ 										</div>
+										<div class="col-4 dz undefined" data-dz="kwwwVB" id="kwwwVB" >
+ 							<div class="form-group mb-3 col-md-12">
+ 								<label class="form-label"></label>
+ 								<div>
+ 									<select name="answer2" id="select_vkjMrv" class="form-select" >
+ 										<option value="0" <%if(questionnaireRecord.answer2==0){%>selected<%}%> >High speed CPU</option>
+										<option value="1" <%if(questionnaireRecord.answer2==1){%>selected<%}%> >Lots of memory</option>
+										<option value="2" <%if(questionnaireRecord.answer2==2){%>selected<%}%> >Large battery</option>
+
+ 									</select>
+ 								</div>
+ 							</div>
+ 
+ 										</div>
+									</div>
+ 									<div class="row " >
+										<div class="col-8 dz undefined" data-dz="oQHwHb" id="oQHwHb" >
+ 											<p class="" >3. How could we improve our product to better meet your needs? </p> 
+ 
+ 										</div>
+										<div class="col-4 dz undefined" data-dz="bdhZMc" id="bdhZMc" >
+ 
+ 							<div class="form-group mb-3 col-md-12">
+ 								<label class="form-label"></label>
+ 								<div>
+ 									<textarea name="answer1" id="textarea_fVXCcS" maxlength="100" class="form-control " ><%=questionnaireRecord.answer1%></textarea>
+ 								</div>
+ 							</div>
+ 
+ 										</div>
+									</div>
+ 									<div class="row " >
+										<div class="col-8 dz undefined" data-dz="YiCkUD" id="YiCkUD" >
+ 											<p class="" >4. Accepting Terms & Conditions</p> 
+ 
+ 										</div>
+										<div class="col-4 dz undefined" data-dz="aWDbfa" id="aWDbfa" >
+ 							<div class="form-group mb-3 col-md-12">
+ 								<div>
+ 									<label class="form-check ">
+ 										<input class="form-check-input " type="checkbox" name="accept_term" id="checkbox_zvDtUp" <%if(questionnaireRecord.accept_term==1){%>checked<%}%> >
+ 										<span class="form-check-label">Accept</span>
+ 									</label> 
+ 								</div>
+ 							</div>
+
+ 										</div>
+									</div>
+ 
+									<hr class="" />
+									<div class="row " >
+										<div class="col-10 dz " data-dz="BmajeQ" id="BmajeQ" >
+ 
+ 										</div>
+										<div class="col-2 dz text-right" data-dz="ArAigx" id="ArAigx" >
+ 											<%if(accessAction.edit){%> 
+ 												<div class="spinner-border" id="button_HaGfuP_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+ 												<button type="submit" id="button_HaGfuP" class="btn btn-fw btn-primary btn-save" data-form="frm-ixVmDP" method-callback="" method-before="" >Save</button> 
+ 											<%}%>
+ 
+ 										</div>
+									</div>
+ 
+ 
+ 								</form>
+ 							</div>
+ 
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</div>
+
+<%- contentFor('scripts') %>
+<script type="text/javascript">
+    var accessAction = [];
+    var accessActionData = "<%-accessAction%>";
+    var dataParam = '<%-JSON.stringify(param)%>';
+    var param = {};
+    if(dataParam != ""){
+      param = JSON.parse('<%-JSON.stringify(param)%>');
+    }    
+    if(accessActionData != "" && accessActionData != undefined) {
+        accessAction = JSON.parse(String.raw `<%-JSON.stringify(accessAction)%>`);
+    }
+    0
+
+onload = () => {
+        
+}
+    
+    
+
+</script>

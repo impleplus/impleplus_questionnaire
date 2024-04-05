@@ -1,0 +1,145 @@
+/*!
+* Builded by Impleplus application builder (https://builder.impleplus.com)
+* Version 2.0.0
+* Link https://www.impleplus.com
+* Copyright impleplus.com
+* Licensed under MIT (https://mit-license.org)
+*/
+.navbar-brand {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;   
+}
+#navbar-menu-list {
+    padding: 0px 30px 0px 20px;
+}
+.navbar-nav a.active {
+    color: #fff!important;
+}
+.navbar-dark {
+    background: #1F496A;
+  }
+.card .config{
+    right: 10px;
+    text-decoration: underline;
+    position: absolute;
+}
+.text-right {
+    text-align: right;
+}
+.navbar-brand-image {
+    margin: 0 auto;
+    height: auto;
+}
+.bg-gray {
+    background-color: #f2f3f4;
+}
+.nav-editor {
+    position: relative;
+}
+    .nav-editor .nav-item {
+        border-bottom: 1px dotted #dedede;
+        padding: 10px 0 10px 0;
+    }
+    .nav-editor .link{
+        display: inline;
+    }
+    .nav-editor .toolbar{
+        display: inline-block;
+        right: 15px;
+        position: absolute;        
+    }
+    .nav-editor .toolbar>*{
+        margin: 0 0.2rem;
+    }
+    .nav-editor .column {
+        border-bottom: 1px dotted #dedede;
+        line-height: 42px;
+    }
+    .nav-editor .column header {
+        display:initial;
+        line-height: 30px;
+    }
+    .nav-item h4 {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+.box-r {
+    border-right: 1px solid #dedede;
+}
+.bold {
+    font-weight: bold;
+}
+.center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+hr.clear {
+    margin: 10px 10px 10px 0;
+    border-width: 2px;
+}
+tr.active {
+    border: 2px dotted #666;
+}
+
+.imple-pagination li{
+    cursor: pointer;
+}
+
+hr.header-text {
+    padding: 0;
+    margin: 0 0 20px 0;
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);        
+  }
+
+.navbar-side {
+    display: initial;
+}
+.sidebar-btn {
+    height: 2rem;
+    display: flex; 
+    margin-left: 0;
+    transition: 0.2s;    
+    opacity: .5;
+}
+#siteNavbar.hide {
+    display: none;
+}
+.page-wrapper.hide {
+    margin-left: 0!important;
+}
+
+.inline {display: inline;}
+table.multilanguage td {
+    vertical-align: top;
+}
+.mg-0{
+    margin: 0;
+}
+.opacity09 {
+    opacity: 90%;
+}
+.avatar-user {
+    height: 100px;
+}
+.modal-2lg {max-width: 80%;}
+
+.button-right{
+    position: absolute;
+    right: 3em;
+    bottom: 1em;
+}
+
+@media (min-width: 1000px) {
+
+}
+
+@media (max-width: 1000px) {
+
+}

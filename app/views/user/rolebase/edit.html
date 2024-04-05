@@ -1,0 +1,55 @@
+<div class="page-body">
+  <div class="container-xl">
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header card-header-light">
+            <h3>Role Info</h3>
+          </div>
+            <div class="card-body">
+
+              <ul class="nav nav-tabs" data-bs-toggle="tabs">
+                <%if(param.role){%>
+                  <%- include('../partials/rolebasetabs.html',{active:'role'}); %>    
+                  <%} else {%>
+                    <li class="nav-item">
+                      <a href="/user/rolebase/edit" class="nav-link active">Role Info</a>
+                    </li>
+                  <%}%>                
+                   
+              </ul>
+              <div class="tab-content">
+                  <br/>
+                  <form action="/user/rolebase/save" class="needs-validation" id="frm" method="post">
+                      <div class="form-group mb-3 col-md-6">
+                          <label class="form-label">Role name</label>
+                          <div>
+                            <input type="text" name="name" value="<%=user_role_base.name%>" class="form-control">
+                          </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-6">
+                        <label class="form-label">Default Url</label>
+                        <div>
+                          <input type="text" name="default_url" value="<%=user_role_base.default_url%>" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 col-md-12">
+                          <label class="form-label">Remark</label>
+                          <div>
+                            <textarea class="form-control" name="remark" rows="3"><%=user_role_base.remark%></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-footer text-right">
+                        <div class="spinner-border" id="btn_save_loading" role="status" style="display: none;"><span class="visually-hidden">Loading...</span></div> 
+                        <button type="submit" id="btn_save" class="btn btn-primary btn-fw btn-save" data-form="frm" method-callback="" method-before="">Save</button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+        </div>
+      </div>
+ 
+  </div>
+</div>
