@@ -64,7 +64,6 @@ http://localhost:3000
 impleplus builder front-end developed base on tabler UI. Please see link for detail 
 https://github.com/tabler/tabler
 
-<h4>7 New version and upgrade version. Open link as below and click "Install".</h4>
- 1 Visit link: <a href="https://builder.impleplus.com/installapp" target="_blank">Questionnaire New Version</a> <br/>
- 2 Click "Install" Button
+<h4>7 Get New version, Upgrade version and more Application. Please visit link .</h4>
+ <a href="https://www.impleplus.com/en" target="_blank">impleplus.com</a>
 
